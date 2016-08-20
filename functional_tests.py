@@ -1,5 +1,6 @@
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys
+import time;
 import unittest;
 # from distutils.dist import warnings
 class NewVisitorTest(unittest.TestCase):
@@ -20,6 +21,7 @@ class NewVisitorTest(unittest.TestCase):
         )
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
+#         time.sleep(10)
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
