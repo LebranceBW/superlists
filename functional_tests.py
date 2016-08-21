@@ -6,7 +6,7 @@ import unittest;
 class NewVisitorTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Firefox();
-        self.browser.implicitly_wait(3);
+        self.browser.implicitly_wait(1);
     def tearDown(self):
         self.browser.quit();
     def check_for_row_in_lists_table(self,row_text):
@@ -14,6 +14,7 @@ class NewVisitorTest(unittest.TestCase):
         rows = table.find_element_by_tag_name('tr')
         self.assertIn(row_text,[row.text for row in rows])
     def test_can_start_a_list_and_retrieve_it_later(self):
+        self.browser.get('http://localhost:8000')
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
                          inputbox.get_attribute('placeholder'),
