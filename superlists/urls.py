@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
-from lists.views import home_page
+#from django.contrib import admin
+from lists.views import home_page,view_list
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^$',home_page, name='home'),
+    url(r'/lists/the_only_list_in_the_world/$',view_list,name="view_list")
 ]
