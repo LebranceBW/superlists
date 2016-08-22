@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from lists.models import Item
+from lists.models import Item,List
 #from django.contrib.redirects.models import Redirect
 from django.http import HttpResponseRedirect
 #from django.http import HttpResponse
@@ -16,5 +16,6 @@ def view_list(request):
     items=Item.objects.all()
     return render(request,'list.html',{'items':items})
 def new_list(request):
-    Item.objects.create(text=request.POST['item_text'])
+    list_=List.objects.create()
+    Item.objects.create(text=request.POST['item_text'],list=list_)
     return  HttpResponseRedirect('/lists/the_only_list_in_the_world/')
