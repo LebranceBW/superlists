@@ -19,5 +19,5 @@ from lists.views import home_page,view_list
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^$',home_page, name='home'),
-    url(r'/lists/the_only_list_in_the_world/$',view_list,name="view_list")
+    url(r'^lists/the_only_list_in_the_world/$',view_list,name="view_list"),
 ]
