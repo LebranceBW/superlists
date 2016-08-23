@@ -2,7 +2,7 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys
-import time;
+# import time;
 import unittest;
 # from distutils.dist import warnings
 class NewVisitorTest(LiveServerTestCase):
@@ -10,6 +10,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser = webdriver.Firefox();
         self.browser.implicitly_wait(1);
     def tearDown(self):
+        self.browser.refresh();
         self.browser.quit();
     def check_for_row_in_lists_table(self,row_text):
         table=self.browser.find_element_by_id('id_list_table')
@@ -57,8 +58,6 @@ class NewVisitorTest(LiveServerTestCase):
         
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers',page_text)
-        self.assertIn('Buy milk',page_text)
-        
-        self.fail('Finish the test!');   
+        self.assertIn('Buy milk',page_text)  
 if __name__=='__main__':
     unittest.main(warnings='ignore')
