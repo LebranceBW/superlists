@@ -2,7 +2,7 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys
-#import time;
+import time;
 import unittest;
 # from distutils.dist import warnings
 class NewVisitorTest(LiveServerTestCase):
@@ -26,6 +26,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
+#         time.sleep(10)
         self.check_for_row_in_lists_table('1:Buy peacock feathers')
         
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -33,6 +34,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 #         time.sleep(10)
         self.check_for_row_in_lists_table('1:Buy peacock feathers')
+#         time.sleep(10)
         self.check_for_row_in_lists_table('2:Use peacock feathers to make a fly')
     
     
